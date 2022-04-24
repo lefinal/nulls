@@ -6,6 +6,8 @@ import (
 	"encoding/json"
 )
 
+// NullableValue are the requirements for values used in Nullable as they need
+// to implement at least sql.Scanner and driver.Valuer.
 type NullableValue interface {
 	sql.Scanner
 	driver.Valuer
