@@ -1,11 +1,11 @@
 # Partly taken from https://about.gitlab.com/blog/2017/11/27/go-tools-and-gitlab-how-to-do-continuous-integration-like-a-boss/
 
-.PHONY: all dep test coverage coverhtml lint docs
+.PHONY: all dep test coverage coverhtml lint
 
-all: build
+all: dep test race msan lint
 
 lint: ## Lint the files
-	revive ./...
+	revive -config revive.toml ./...
 
 test: ## Run unittests
 	go test -short ./...
