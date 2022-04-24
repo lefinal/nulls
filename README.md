@@ -20,6 +20,7 @@ go get github.com/lefinal/nulls
 - `float32` (`nulls.Float32`)
 - `float64` (`nulls.Float64`)
 - `int` (`nulls.Int`)
+- `int16` (`nulls.Int16`)
 - `int32` (`nulls.Int32`)
 - `int64` (`nulls.Int64`)
 - `string` (`nulls.String`)
