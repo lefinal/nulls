@@ -1,5 +1,13 @@
 # nulls
 
+[![made-with-Go](https://img.shields.io/badge/Made%20with-Go-1f425f.svg)](http://golang.org)
+![Go](https://github.com/LeFinal/nulls/workflows/Go/badge.svg?branch=main)
+![GitHub go.mod Go version](https://img.shields.io/github/go-mod/go-version/lefinal/nulls)
+[![GoReportCard example](https://goreportcard.com/badge/github.com/lefinal/nulls)](https://goreportcard.com/report/github.com/lefinal/nulls)
+[![codecov](https://codecov.io/gh/lefinal/nulls/branch/main/graph/badge.svg?token=ema8Z2HEk5)](https://codecov.io/gh/lefinal/nulls)
+[![GitHub issues](https://img.shields.io/github/issues/lefinal/nulls)](https://github.com/lefinal/nulls/issues)
+![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/lefinal/nulls)
+
 This package uses the principle of NULL-types from the `sql`-package. However, it also adds JSON (un)marshalling
 functionality while supporting NULL-values.
 It's based on the idea of [gobuffalo/nulls](https://github.com/gobuffalo/nulls), but uses native (un)marshalling
