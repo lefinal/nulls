@@ -31,6 +31,7 @@ go get github.com/lefinal/nulls
 - `int16` (`nulls.Int16`)
 - `int32` (`nulls.Int32`)
 - `int64` (`nulls.Int64`)
+- `json.RawMessage` (`nulls.JSONRawMessage`)
 - `string` (`nulls.String`)
 - `time.Time` (`nulls.Time`)
 

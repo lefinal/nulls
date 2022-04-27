@@ -8,3 +8,13 @@ package nulls
 func isNull(b []byte) bool {
 	return b == nil || string(b) == "null"
 }
+
+// copyBytes returns a copy of the given byte slice.
+func copyBytes(src []byte) []byte {
+	if src == nil {
+		return nil
+	}
+	b := make([]byte, len(src))
+	copy(b, src)
+	return b
+}
