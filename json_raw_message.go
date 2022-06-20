@@ -7,12 +7,8 @@ import (
 	"reflect"
 )
 
-// JSONRawMessage holds a json.RawMessage. However, this differs from the other
-// types: Actually, "null" is a valid json.RawMessage (NOT nil!) and for example
-// PostgreSQL distinguishes between regular NULL-values and "null"-values, being
-// regular JSONB. Marshalling-logic however, only knows "null". Therefore, in
-// UnmarshalJSON we do NOT set Valid to false, when unmarshalling "null" (as we
-// do for the other types), but only, if the passed data is nil.
+// JSONRawMessage holds a json.RawMessage. Keep in mind, that the JSON NULL
+// value will be represented with Valid being false.
 type JSONRawMessage struct {
 	// RawMessage is the actual json.RawMessage when Valid.
 	RawMessage json.RawMessage
@@ -37,9 +33,6 @@ func (rm JSONRawMessage) MarshalJSON() ([]byte, error) {
 }
 
 // UnmarshalJSON as json.RawMessage or sets Valid to false if empty.
-//
-// Warning: This differs from unmarshalling-logic of other types. For more
-// information see documentation of JSONRawMessage.
 func (rm *JSONRawMessage) UnmarshalJSON(data []byte) error {
 	// Do NOT use regular NULL-check here.
 	if data == nil {
