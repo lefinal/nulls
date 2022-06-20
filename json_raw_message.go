@@ -44,6 +44,7 @@ func (rm *JSONRawMessage) UnmarshalJSON(data []byte) error {
 	// Do NOT use regular NULL-check here.
 	if data == nil {
 		rm.Valid = false
+		rm.RawMessage = nil
 		return nil
 	}
 	rm.Valid = true
@@ -54,6 +55,7 @@ func (rm *JSONRawMessage) UnmarshalJSON(data []byte) error {
 func (rm *JSONRawMessage) Scan(src any) error {
 	if src == nil {
 		rm.Valid = false
+		rm.RawMessage = nil
 		return nil
 	}
 	rm.Valid = true
