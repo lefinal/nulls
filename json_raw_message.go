@@ -35,7 +35,7 @@ func (rm JSONRawMessage) MarshalJSON() ([]byte, error) {
 // UnmarshalJSON as json.RawMessage or sets Valid to false if empty.
 func (rm *JSONRawMessage) UnmarshalJSON(data []byte) error {
 	// Do NOT use regular NULL-check here.
-	if data == nil {
+	if isNull(data) {
 		rm.Valid = false
 		rm.RawMessage = nil
 		return nil

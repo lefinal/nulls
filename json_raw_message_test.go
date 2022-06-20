@@ -73,7 +73,7 @@ func (suite *JSONRawMessageUnmarshalJSONSuite) TestNull() {
 	}
 	err := json.Unmarshal([]byte(`{"rm": null}`), &s)
 	suite.Require().NoError(err, "should not fail")
-	suite.True(s.RM.Valid, "should not be valid")
+	suite.False(s.RM.Valid, "should not be valid")
 }
 
 func (suite *JSONRawMessageUnmarshalJSONSuite) TestOK() {
