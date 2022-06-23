@@ -114,33 +114,14 @@ func TestTime_Value(t *testing.T) {
 	suite.Run(t, new(TimeValueSuite))
 }
 
-// TimeUTCSuite tests Time.UTC.
-type TimeUTCSuite struct {
-	suite.Suite
-}
-
-func (suite *TimeUTCSuite) TestNull() {
-	tt := Time{Time: testTime}
-	raw, err := tt.UTC().Value()
-	suite.Require().NoError(err, "should not fail")
-	suite.Nil(raw, "should return correct value")
-}
-
-func (suite *TimeUTCSuite) TestOK() {
-	tt := NewTime(testTime)
-	loc, err := time.LoadLocation("America/New_York")
-	if err != nil {
-		panic(err)
-	}
-	tt.Time.In(loc)
-	raw, err := tt.UTC().Value()
-	suite.Require().NoError(err, "should not fail")
-	rawTime, ok := raw.(time.Time)
-	suite.Require().True(ok, "returned valued should be time")
-	suite.NotEqual(rawTime, testTime, "times should differ")
-	suite.Equal(rawTime, testTime.UTC(), "should return correct value")
-}
-
 func TestTime_UTC(t *testing.T) {
-	suite.Run(t, new(TimeUTCSuite))
+	tt := Time{
+		Time:  time.UnixMilli(1958323),
+		Valid: true,
+	}
+	utc := tt.UTC()
+	assert.Equal(t, Time{
+		Time:  tt.Time.UTC(),
+		Valid: tt.Valid,
+	}, utc, "should return correct value")
 }
