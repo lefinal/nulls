@@ -61,21 +61,10 @@ func (t Time) Value() (driver.Value, error) {
 	}.Value()
 }
 
-// timeUTCValuer wraps Time for satisfying driver.Value with UTC time.
-type timeUTCValuer struct {
-	time Time
-}
-
-// Value returns the value for satisfying the driver.Valuer interface. The
-// returned time will be in UTC if not null.
-func (t timeUTCValuer) Value() (driver.Value, error) {
-	return sql.NullTime{
-		Time:  t.time.Time.UTC(),
-		Valid: t.time.Valid,
-	}.Value()
-}
-
-// UTC returns a driver.Valuer that uses UTC time if not null.
-func (t Time) UTC() driver.Valuer {
-	return timeUTCValuer{time: t}
+// UTC returns the UTC time.
+func (t Time) UTC() Time {
+	return Time{
+		Time:  t.Time.UTC(),
+		Valid: t.Valid,
+	}
 }
