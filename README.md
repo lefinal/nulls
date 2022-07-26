@@ -39,6 +39,7 @@ go get github.com/lefinal/nulls
 
 Any datatype implementing the required interface can be used as `Nullable` offering the same functionality as predefined
 ones.
+If no SQL-support is required, you can also use `JSONNullable`.
 
 # Usage
 
