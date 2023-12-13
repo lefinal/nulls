@@ -53,7 +53,7 @@ func (f *Float64) Scan(src any) error {
 }
 
 // Value returns the value for satisfying the driver.Valuer interface.
-func (f *Float64) Value() (driver.Value, error) {
+func (f Float64) Value() (driver.Value, error) {
 	return sql.NullFloat64{
 		Float64: f.Float64,
 		Valid:   f.Valid,
