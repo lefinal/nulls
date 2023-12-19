@@ -4,7 +4,6 @@ import (
 	"database/sql/driver"
 	"encoding/json"
 	"fmt"
-	"reflect"
 )
 
 // JSONRawMessage holds a json.RawMessage. Keep in mind, that the JSON NULL
@@ -53,9 +52,14 @@ func (rm *JSONRawMessage) Scan(src any) error {
 	}
 	rm.Valid = true
 	// Copy bytes.
-	srcBytes, ok := src.([]byte)
-	if !ok {
-		return fmt.Errorf("cannot convert to byte slice: %s", reflect.TypeOf(src).String())
+	var srcBytes []byte
+	switch src := src.(type) {
+	case []byte:
+		srcBytes = src
+	case string:
+		srcBytes = []byte(src)
+	default:
+		return fmt.Errorf("unsupported source value type: %T", src)
 	}
 	b := make([]byte, len(srcBytes))
 	copy(b, srcBytes)
