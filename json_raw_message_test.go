@@ -110,14 +110,23 @@ func (suite *JSONRawMessageScanSuite) TestJSONNull() {
 
 func (suite *JSONRawMessageScanSuite) TestUnexpectedValue() {
 	var rm JSONRawMessage
-	err := rm.Scan("I'm not a byte slice.")
+	err := rm.Scan(1234)
 	suite.Error(err, "should fail")
 }
 
-func (suite *JSONRawMessageScanSuite) TestOK() {
+func (suite *JSONRawMessageScanSuite) TestOKByteSlice() {
 	v := json.RawMessage(`{"meow":"woof"}`)
 	var rm JSONRawMessage
 	err := rm.Scan([]byte(v))
+	suite.Require().NoError(err, "should not fail")
+	suite.True(rm.Valid, "should be valid")
+	suite.Equal(v, rm.RawMessage, "should scan correct value")
+}
+
+func (suite *JSONRawMessageScanSuite) TestOKString() {
+	v := json.RawMessage(`{"meow":"woof"}`)
+	var rm JSONRawMessage
+	err := rm.Scan(string(v))
 	suite.Require().NoError(err, "should not fail")
 	suite.True(rm.Valid, "should be valid")
 	suite.Equal(v, rm.RawMessage, "should scan correct value")
