@@ -18,7 +18,7 @@ type NullableIntoValue[T any] interface {
 // reference.
 type NullableInto[T NullableIntoValue[T]] struct {
 	// V is the actual value when Valid.
-	V T
+	V T `exhaustruct:"optional"`
 	// Valid describes whether the Nullable does not hold a NULL value.
 	Valid bool
 }

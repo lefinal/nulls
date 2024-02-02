@@ -10,7 +10,7 @@ import (
 // (un)marshallable. However, it cannot be used as sql.Scanner or driver.Valuer.
 type JSONNullable[T any] struct {
 	// V is the actual value when Valid.
-	V T
+	V T `exhaustruct:"optional"`
 	// Valid describes whether the JSONNullable does not hold a NULL value.
 	Valid bool
 }

@@ -10,7 +10,7 @@ import (
 // value will be represented with Valid being false.
 type JSONRawMessage struct {
 	// RawMessage is the actual json.RawMessage when Valid.
-	RawMessage json.RawMessage
+	RawMessage json.RawMessage `exhaustruct:"optional"`
 	// Valid when no NULL-value is represented.
 	Valid bool
 }

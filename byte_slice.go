@@ -10,7 +10,7 @@ import (
 // ByteSlice holds a nullable byte slice.
 type ByteSlice struct {
 	// ByteSlice is the actual byte slice when Valid.
-	ByteSlice []byte
+	ByteSlice []byte `exhaustruct:"optional"`
 	// Valid when no NULL-value is represented.
 	Valid bool
 }

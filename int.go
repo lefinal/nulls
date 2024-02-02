@@ -9,7 +9,7 @@ import (
 // Int holds a nullable int.
 type Int struct {
 	// Int is the actual value when Valid.
-	Int int
+	Int int `exhaustruct:"optional"`
 	// Valid when no NULL-value is represented.
 	Valid bool
 }

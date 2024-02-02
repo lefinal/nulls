@@ -9,7 +9,7 @@ import (
 // Int16 holds a nullable int16.
 type Int16 struct {
 	// Int16 is the actual value when Valid.
-	Int16 int16
+	Int16 int16 `exhaustruct:"optional"`
 	// Valid when no NULL-value is represented.
 	Valid bool
 }

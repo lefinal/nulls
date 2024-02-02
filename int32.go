@@ -9,7 +9,7 @@ import (
 // Int32 holds a nullable int32.
 type Int32 struct {
 	// Int32 is the actual value when Valid.
-	Int32 int32
+	Int32 int32 `exhaustruct:"optional"`
 	// Valid when no NULL-value is represented.
 	Valid bool
 }
