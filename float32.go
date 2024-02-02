@@ -9,7 +9,7 @@ import (
 // Float32 holds a nullable float32.
 type Float32 struct {
 	// Float32 is the actual value when Valid.
-	Float32 float32
+	Float32 float32 `exhaustruct:"optional"`
 	// Valid when no NULL-value is represented.
 	Valid bool
 }

@@ -9,7 +9,7 @@ import (
 // Bool holds a nullable boolean value.
 type Bool struct {
 	// Bool is the actual boolean value when Valid.
-	Bool bool
+	Bool bool `exhaustruct:"optional"`
 	// Valid when no NULL-value is represented.
 	Valid bool
 }

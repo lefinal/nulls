@@ -9,7 +9,7 @@ import (
 // String holds a nullable string.
 type String struct {
 	// String is the actual value when Valid.
-	String string
+	String string `exhaustruct:"optional"`
 	// Valid when no NULL-value is represented.
 	Valid bool
 }

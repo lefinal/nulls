@@ -10,7 +10,7 @@ import (
 // Time holds a nullable time.Time.
 type Time struct {
 	// Time is the actual value when Valid.
-	Time time.Time
+	Time time.Time `exhaustruct:"optional"`
 	// Valid when no NULL-value is represented.
 	Valid bool
 }

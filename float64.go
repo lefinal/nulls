@@ -9,7 +9,7 @@ import (
 // Float64 holds a nullable float64.
 type Float64 struct {
 	// Float64 is the actual value when Valid.
-	Float64 float64
+	Float64 float64 `exhaustruct:"optional"`
 	// Valid when no NULL-value is represented.
 	Valid bool
 }
